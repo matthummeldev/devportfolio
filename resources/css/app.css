@@ -1,0 +1,250 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+
+@layer base {
+    @font-face {
+      font-family: 'Work Sans', sans-serif;
+      src: url(https://fonts.googleapis.com) format("truetype");
+    }
+      body {
+        font-family: 'Work Sans', sans-serif;
+      }
+    main p a{
+      @apply text-blue-600 underline hover:text-indigo-700;
+    }
+    main h1,h2,h3,h4,h5,h6 a {
+      @apply text-blue-600 hover:text-indigo-700;
+    }
+    h1 {
+      @apply mb-5 text-5xl;
+    }
+    h2 {
+      @apply mt-10 mb-5 text-4xl;
+    }
+    h3 {
+      @apply mb-5 text-3xl;
+    }
+    h4 {
+      @apply mb-5 text-2xl;
+    }
+    h5 {
+      @apply mb-5 text-xl;
+    }
+    h6 {
+      @apply mb-5 text-xl;
+    }  
+    p {
+      @apply mb-5 text-xl leading-relaxed font-extralight text-slate-600;
+    }
+    .entry-content ul li, ol li {
+      @apply mb-5 list-outside list-decimal
+    }
+   .entry-content form input, textarea {
+    @apply mb-5 w-full
+   }
+   .entry-content form input[type=text], input[type=email], input[type=phone], input[type=url], input[type=tel] {
+      @apply border-0 border-b-2 border-gray-200
+   }
+  .entry-content form input[type=submit] {
+      @apply text-white bg-gradient-to-br from-blue-900 to-blue-500 focus:outline-none focus:ring-4 focus:ring-gray-300 hover:bg-gradient-to-br hover:from-blue-900 hover:to-blue-900 rounded-full font-bold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 drop-shadow-xl button mr-[1.5rem] mt-5
+  }
+  .entry-content form textarea {
+      @apply  p-5 border-0 border-b-2 border-gray-200 bg-slate-50 focus:border-gray-700;
+  }
+  .entry-content form input[type=checkbox] {
+    @apply w-5 h-5 rounded-full mb-0
+  }
+    }
+    @layer utilities {
+        .button {
+            padding: 12px 30px;
+        }
+    }  
+    @layer components {
+      .hero {
+         @apply z-0 flex flex-col max-h-screen mx-auto;     
+          h1 {
+            @apply font-bold md:text-4xl lg:text-5xl;
+          }
+       }
+      .text-gradient {
+        @apply text-3xl leading-relaxed tracking-tight text-transparent bg-gradient-to-br from-blue-900 to-indigo-600 bg-clip-text dark:text-white;
+        a {
+            @apply hover:text-purple-900;
+        }
+      }
+      .primary-menu {
+          @apply flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 dark:text-white
+      }
+      ul.primary-menu {
+        @apply font-medium flex flex-col md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 
+      }
+      ul.primary-menu li a {
+          @apply  block py-4 pl-3 pr-4 text-lg font-normal text-center text-gray-900 border-b border-slate-300 md:hover:bg-transparent md:border-0 hover:text-blue-700 md:p-0 dark:text-white hover:bg-indigo-100 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 
+      }
+      .menu-column {
+          @apply flex px-10 justify-center md:justify-start
+       }
+       ul.footer-menu  {
+            @apply  mb-10 lg:mb-0 lg:flex
+       }
+      
+      ul.footer-menu li a {
+         @apply text-sm font-normal text-slate-700 hover:text-blue-600 hover:underline text-left lg:pr-4
+      }
+      .category-pill {
+        @apply mb-5 bg-blue-300 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-blue-300 dark:text-gray-900;
+      }
+      .banner {
+        @apply md:py-4 md:px-16 lg:px-12 p-6
+      }
+      .banner-content {
+        @apply flex flex-wrap items-center justify-between max-w-screen-xl mx-auto
+      }
+      .logo {
+        @apply flex items-center justify-center 
+      }
+      .site-name,  footer h3, footer h4 {
+        @apply py-2 text-lg font-extrabold uppercase lg:py-4 hover:underline;
+      }
+      .primary-button {
+        @apply text-white bg-gradient-to-br from-blue-900 to-blue-500 focus:outline-none focus:ring-4 focus:ring-gray-300 hover:bg-gradient-to-br hover:from-blue-900 hover:to-blue-900 rounded-full font-bold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 drop-shadow-xl button mr-[1.5rem]
+      }
+      .gray-section {
+        @apply bg-gray-50 dark:bg-gray-900;
+      }
+      .white-section {
+        @apply bg-white dark:bg-gray-900;
+      }
+      .section-container {
+        @apply max-w-screen-xl px-4 py-8 mx-auto sm:py-16 lg:px-6;
+      }
+      .section-content {
+        @apply max-w-screen-md mx-auto mb-8 text-center lg:mb-16;
+        p {
+          @apply font-light text-gray-500 dark:text-gray-400 sm:text-xl; 
+        }
+        h2 {
+          @apply mb-5 font-bold leading-relaxed tracking-tight md:text-4xl lg:text-5xl;
+        }
+      }
+      .gradient-text {
+        @apply text-transparent bg-gradient-to-br from-blue-900 to-blue-600 dark:to-blue-600 bg-clip-text dark:text-white;
+       }
+       .gradient-border {
+        @apply bg-gradient-to-br from-blue-900 to-blue-600 dark:to-blue-600 border-4 rounded-full p-[.5em]
+      }
+
+
+      /* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+
+.alignright {
+  float:right;
+  margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%; /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center;
+}
+
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+      white-space: nowrap;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+ 
+    }

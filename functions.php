@@ -27,6 +27,9 @@ function tailpress_setup() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'css/editor-style.css' );
     add_theme_support( 'automatic-feed-links' ); 
+    add_theme_support( "responsive-embeds" );
+    add_theme_support( "custom-header");
+    add_theme_support( "custom-background");
 }
 add_action( 'after_setup_theme', 'tailpress_setup' );
 /**
@@ -36,6 +39,7 @@ function tailpress_enqueue_scripts() {
 	$theme = wp_get_theme();
 	wp_enqueue_style( 'tailpress', tailpress_asset( 'css/app.css' ), array(), $theme->get( 'Version' ) );
 	wp_enqueue_script( 'tailpress', tailpress_asset( 'js/app.js' ), array(), $theme->get( 'Version' ) );
+    wp_enqueue_script( 'flowbite', 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js', true);
 }
 add_action( 'wp_enqueue_scripts', 'tailpress_enqueue_scripts' );
 /**
@@ -140,10 +144,7 @@ add_action('wp_loaded', 'prefix_output_buffer_start');
 function prefix_output_buffer_start() { 
     ob_start("prefix_output_callback"); 
 }
-add_action('shutdown', 'prefix_output_buffer_end');
-function prefix_output_buffer_end() { 
-    ob_end_flush(); 
-}
+
 function prefix_output_callback($buffer) {
     return preg_replace( "%[ ]type=[\'\"]text\/(javascript|css)[\'\"]%", '', $buffer );
 }

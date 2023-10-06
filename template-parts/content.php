@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'max-w-screen-lg px-4 py-8 mx-auto bg-white dark:bg-gray-900 lg:py-16 lg:px-6' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'max-w-screen-lg px-4 py-8 mx-auto bg-white dark:bg-gray-900 lg:py-16 lg:px-6 entry-content' ); ?>>
 	<?php
 	/* translators: %s: Name of current post */
 	the_content(

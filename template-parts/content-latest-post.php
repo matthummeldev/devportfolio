@@ -1,64 +1,58 @@
-<section class="bg-white dark:bg-gray-900">
-  <div class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
-      <div class="max-w-screen-sm mx-auto mb-8 text-center lg:mb-16">
-          <h2 class="mb-4 text-6xl font-extrabold tracking-tight uppercase text-gradient dark:text-white">Latest Post</h2>
-      </div> 
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-
-      <?php
-$lastposts = get_posts( array(
-	'posts_per_page' => 3
-) );a
-
-if ( $lastposts ) {
-	foreach ( $lastposts as $post ) :
-		setup_postdata( $post ); ?>
-            
-<article class="bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+<section class="bg-gray-50 section">
+      <h2><?php _e('Latest Post', 'portfolio') ?></h2>
+      <div class="grid gap-10 mx-auto my-auto max-w-7xl sm:grid-cols-1 lg:grid-cols-3"> 
+             <?php
+              $lastposts = get_posts( array(
+                'posts_per_page' => 3,
+                'post_status' => 'publish', 
+                'orderby' => 'publish_date', 
+                'order' => 'DESC'
+                ) );
+              if ( $lastposts ) { ?>
+              <?php foreach ( $lastposts as $post ) :
+                    setup_postdata( $post ); ?>
+            <article class="text-left card">
+                <?php 
+                  if (has_post_thumbnail()) {
+                    $image_id = get_post_thumbnail_id();
+                    $image_url_array = wp_get_attachment_image_src($image_id, 'thumb');
+                    $image_url = $image_url_array[0];
+                    echo '<img src="'. esc_url($image_url) .'" alt="'. the_title_attribute('echo=0') .'" class="mb-5 rounded-t-lg">';
+                    } else {
+                        // Fallback in case the post doesn't have a featured image
+                        echo '<img src="http://localhost:8001/wp-content/uploads/2023/02/my-first-post.jpg" alt="Default Image">';
+                  }  
+                ?>
+                <div class="px-4 py-2">
+                  <header class="mb-4 entry-header">
+                  
+                      <?php the_title( sprintf( '<h3>
+                       <a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+                      <span class="text-sm"><?php echo  get_the_date(); ?></span>
                       
-                    <img class="mb-2 rounded-t-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png" alt="office laptop working">
+                  </header>
+                <hr class="w-16 h-2 mb-5 bg-indigo-800"/>
+                <p class="mt-4 mb-4 font-light text-gray-500 dark:text-gray-400"><?php the_excerpt(); ?></p>       
 
-                      <div class="p-4">
-                    
-                      
-                <header class="mb-4 entry-header">
-                    
-		            <?php the_title( sprintf( '<h2 class="my-6 text-4xl font-bold tracking-tight text-gradient hover:bg-gray-900 dark:text-white"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-                    <span class="mb-4 text-sm"><?php echo 'Posted ', human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?></span>
-	                    
-                </header>
-
-    
-                        <hr class="mb-4"/>
-
-                        <div class="mb-4 dark:text-white ">
-
-                        <?php $categories = get_categories();
-foreach($categories as $category) {
-   echo ' <span class="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700mb-4" style="width: max-content">' . $category->name . '</a></span>';
-} ?>
-                            
-                       
-        </div>
-
-                      
-
-                       <hr/>
-
-                        <p class="mt-4 mb-4 font-light text-gray-500 dark:text-gray-400"><?php the_excerpt(); ?></p>
-                           
-                        <div class="mt-10 mb-8">
-                            <a href="<?php echo get_the_permalink(); ?>" class="primary-button">Read Post</a>   
-                        </div>
-
-                    </div>
-                 
-                    </article>
-
+                <div class="mb-4 dark:text-white">
                   <?php
-	endforeach; 
-	wp_reset_postdata();
-} ?>
-      </div>  
-  </div>
-</section>
+                          $output = '';
+                          $categories = get_the_category();
+                          if ($categories){
+                              foreach($categories as $category) {
+                                  $output .= '<div class="inline-block"><span class="px-3 py-2 mr-2 text-sm font-small leading-[3em] text-white bg-indigo-800 rounded-full dark:bg-gray-700m" style="width: max-content">' . $category->name . '</a></span></div>';
+                              }
+                          echo trim($output);
+                          }
+                      ?>
+                 </div>
+              </div>           
+              </article>
+            <?php endforeach;   
+            if ( !$lastposts ) { 
+            ?>
+            <?php get_template_part('template-parts/content', 'section-maintenance'); } 
+               wp_reset_postdata();
+            } ?>
+            </div>
+</section>              

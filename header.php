@@ -9,38 +9,62 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<a href="#content" class="sr-only focus:not-sr-only">Skip to content</a>
-<?php if ( is_page() && !is_page('home') || is_404() ) { ?>
-<header class="banner bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
-<nav class="banner-content">
-<a href="<?php echo  home_url(); ?>" class="site-name text-gradient">
-  <?php echo get_bloginfo( 'name' ); ?>
-</a>
-<button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only"><?php _e('Open main menu', 'tailpress') ?></span>
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-      </svg>
-  </button>
-<?php wp_nav_menu(
+<a href="#content" class="sr-only focus:not-sr-only"><?php _e('Skip to content', 'portfolio') ?></a>
+
+<header>
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
+      
+            <a href="<?php echo  home_url(); ?>" class="flex items-center site-name text-gradien">
+                <?php echo get_bloginfo( 'name' ); ?>
+            </a> 
+             
+            <div class="flex items-center lg:order-2">
+
+                <a href="http://localhost:8001/contact/" class="primary-button">Get in touch</a>
+
+                <div class="w-20 h-20 mr-6">
+         
+         <?php 
+             $custom_logo_id = get_theme_mod('custom_logo');
+             $logo = wp_get_attachment_image_src($custom_logo_id , 'full');
+           ?>	
+
+           <?php echo '<img src="'. esc_url($logo[0]) .'" alt="'. get_bloginfo('name') .'" class="rounded-full filter grayscale">'; ?>
+           
+       </div>
+                
+                <button data-collapse-toggle="menu-container" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                    <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+               
+            </div>
+
+            <?php wp_nav_menu(
           array(
-            'container_id'    => 'navbar-default',
-            'container_class' => 'hidden w-full md:block md:w-auto',
+            'container_id'    => 'menu-container',
+            'container_class' => 'items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1',
             'menu_class'      => 'primary-menu',
             'theme_location'  => 'primary',
             'li_class'        => '',
             'fallback_cb'     => false,
           )
-); 
-?>
-</nav>
+    ); ?>
+        </div>
+    </nav>
+</header>
+
+<?php if ( is_page() && !is_page('home') || is_404() ) { ?>
+
 <?php if ( have_posts() ) : ?>
   <?php
   while ( have_posts() ) :
     the_post();
     ?>
-<div class="max-w-screen-md px-6 py-8 mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-  <div class="flex flex-col items-center">
+<div class="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
+  <div class="flex flex-col items-center max-w-screen-md mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
       <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-center uppercase lg:text-6xl dark:text-white text-gradient">
         <div class="text-center"><?php the_title(); ?></div>
         <?php if ( is_single() ) { ?>
@@ -52,34 +76,11 @@
 <?php endwhile; ?>
 <?php endif; ?>
 </div>
-</div>
-</header>	
+
 <?php } ?>
 <?php if ( is_archive() ) { ?>
-  <header class="banner bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
-    <nav class="banner-content">  
-    <a href="<?php echo  home_url(); ?>" class="site-name text-gradient">
-      <?php echo get_bloginfo( 'name' ); ?>
-    </a>     
-  <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only"><?php _e('Open main menu','tailpress'); ?></span>
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-      </svg>
-  </button>
-  <?php wp_nav_menu(
-          array(
-            'container_id'    => 'navbar-default',
-            'container_class' => 'hidden w-full md:block md:w-auto',
-            'menu_class'      => 'primary-menu',
-            'theme_location'  => 'primary',
-            'li_class'        => '',
-            'fallback_cb'     => false,
-          )
-    ); ?>
-</nav>
-<div class="max-w-screen-md px-6 py-8 mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-  <div class="flex flex-col items-center">
+  <div class="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
+  <div class="flex flex-col items-center max-w-screen-md mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
       <div>
       <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-center uppercase lg:text-6xl dark:text-white text-gradient">
        <?php the_archive_title(); ?>
@@ -98,60 +99,32 @@
 
 </div>
   </div>
-
-</header>
 		
 <?php } ?>
 <?php if ( is_single() ) { ?>
-<header class="banner bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
 
-<nav class="banner-content">
-
-<a href="<?php echo  home_url(); ?>" class="site-name text-gradient">
-  <?php echo get_bloginfo( 'name' ); ?>
-</a>
-   
-<button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-    <span class="sr-only"><?php _e('Open main menu','tailpress'); ?></span>
-    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-    </svg>
-</button>
-
-  <?php wp_nav_menu(
-        array(
-          'container_id'    => 'navbar-default',
-          'container_class' => 'hidden w-full md:block md:w-auto',
-          'menu_class'      => 'primary-menu',
-          'theme_location'  => 'primary',
-          'li_class'        => '',
-          'fallback_cb'     => false,
-        )
-  ); ?>
-
-</nav>
-
-<div class="max-w-screen-md px-6 py-8 mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-<div class="flex flex-col items-center">
+  <div class="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
+  <div class="flex flex-col items-center max-w-screen-md mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
     <div>
     <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-center uppercase lg:text-6xl dark:text-white text-gradient">
       <div class="text-center"><?php the_title(); ?></div>
-</h1>
+    </h1>
+
       <?php if ( is_single() ) { ?>
 
         <div class="text-center">
         <?php
 
-$output = '<span class="text-sm">Posted in ';
-$categories = get_the_category();
-if ($categories){
+        $output = '<span class="text-sm">Posted in ';
+        $categories = get_the_category();
+        if ($categories){
 
-    foreach($categories as $category) {
-        $output .= '<span class="px-3 py-2 text-sm font-medium text-white bg-indigo-500 rounded-full dark:bg-gray-700 style="width: max-content"><a href="' . esc_attr( esc_url( get_category_link( $category->term_id ) ) ) . '">' . $category->name . '</a></span>';
-    }
+        foreach($categories as $category) {
+            $output .= '<span class="px-3 py-2 text-sm font-medium text-white bg-indigo-900 mx-1 rounded-full dark:bg-gray-700 style="width: max-content"><a href="' . esc_attr( esc_url( get_category_link( $category->term_id ) ) ) . '">' . $category->name . '</a></span>';
+        }
 
-echo trim($output);
-}
+        echo trim($output);
+        }
 ?>
  <span class="text-sm font-normal text-slate-500"></span><span class="text-sm"><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?></span></span>
 
@@ -165,65 +138,39 @@ echo trim($output);
 
 </div>
 </div>
-
-</header>
   
 <?php } ?>
 
 <?php if ( is_front_page() ) { ?>
 
-  <header class="banner bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
-    <nav class="banner-content">
-      <a href="<?php echo  home_url(); ?>" class="site-name text-gradient">
-        <?php echo get_bloginfo( 'name' ); ?>
-      </a>   
-  <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-      <span class="sr-only"><?php _e('Open main menu','tailpress') ?></span>
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-      </svg>
-  </button>
+<div class="hero"> 
+    <div class="hero-container">
 
-    <?php wp_nav_menu(
-          array(
-            'container_id'    => 'navbar-default',
-            'container_class' => 'hidden w-full md:block md:w-auto',
-            'menu_class'      => 'primary-menu',
-            'theme_location'  => 'primary',
-            'li_class'        => '',
-            'fallback_cb'     => false,
-          )
-    ); ?>
-</nav>
+            <?php // the_content(); ?>
+            <div>
 
-<article class="antialiased">
-<div class="max-w-screen-md px-6 py-8 mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-    <div class="flex flex-col items-center gap-8 xl:gap-16 lg:flex-row">
-      
-      <div class="text-center lg:text-left">
-
-            <?php the_content(); ?>
-
+            <h1 class="text-xl font-extrabold leading-tight tracking-tight uppercase md:text-3xl lg:text-5xl dark:text-white">
+            <span class="text-3xl md:text-4xl lg:text-6xl text-gradient">Hi there!</span>
+              I'm Matt Hummel
+            </h1>
+          
+            <p class="text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
+            A web developer with 12 years of experience located in Fredericksburg, Virginia.
+            </p>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/matthummel-va/" aria-label="LinkedIn">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+                <a href="https://github.com/mattrhummel" aria-label="Twitter">
+                    <ion-icon name="logo-github"></ion-icon> 
+                </a>
+          </div>       
       </div>
-
-      <div class="max-w-sm">
-
-        <?php 
-            $custom_logo_id = get_theme_mod('custom_logo');
-            $logo = wp_get_attachment_image_src($custom_logo_id , 'full');
-          ?>	
-
-        <div class="gradient-border">		 
-          <?php echo '<img src="'. esc_url($logo[0]) .'" alt="'. get_bloginfo('name') .'" class="rounded-full filter grayscale">'; ?>
-        </div>
-      </div>
-
 </div>
-    </div>
-  </div>
-  </article>
-</header>
 
+  </div>
+</div>
 </div>		
 		
 <?php } ?>

@@ -44,7 +44,7 @@ $the_query = new WP_Query( $args1 ); ?>
     $project_categories = get_the_terms($project_id, 'project_categories');
     if($project_categories){
         foreach($project_categories as $project_category) {          
-            echo '<div class="inline-block"><span class="inline-block"><span class="px-3 py-2 mr-2 text-sm font-small leading-[3em] text-white bg-indigo-500 rounded-full dark:bg-gray-700m" style="width: max-content">' . $project_category->name . '</a></span></div>';
+            echo '<div class="inline-block"><span class="inline-block"><span class="px-3 py-2 mr-2 text-sm font-small leading-[3em] text-white bg-indigo-900 rounded-full dark:bg-gray-700m" style="width: max-content">' . $project_category->name . '</a></span></div>';
       }
     } else {
       echo 'No Category';

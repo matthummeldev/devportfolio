@@ -23,70 +23,35 @@ if ( $lastposts ) {
     foreach ( $lastposts as $post ) :
 setup_postdata( $post ); ?>
 
-<article class="bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-             
-<div class="p-10">
-          <header class="mb-4 entry-header">
-              
-            <?php the_title( sprintf( '<h2 class="my-6 text-3xl font-bold tracking-tight text-gradient hover:bg-gray-900 dark:text-white"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+<article class="mb-4 text-left card">
 
-            <p class="mt-4 mb-4 font-light text-gray-500 dark:text-gray-400"><?php the_excerpt(); ?></p>
-                 
-          </header>
+<div class="px-4 py-2">
+  <header class="mb-4 entry-header">
+  
+      <?php the_title( sprintf( '<h3>
+       <a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+      <span class="text-sm"><?php echo  get_the_date(); ?></span>
+      
+  </header>
+  
+<hr class="w-16 h-2 mb-5 bg-indigo-800"/>
 
-          <hr class="mb-4"/>
+<p><?php the_excerpt(); ?></p>
 
-          <div class="mb-4 dark:text-white ">
-          <span class="mb-4 text-sm"><?php echo 'Posted ', human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago in '; ?></span>
-                            <?php
-
-                                $output = '';
-                                $categories = get_the_category();
-                                if ($categories){
-
-                                    foreach($categories as $category) {
-                                        $output .= '<span class="px-3 py-2 mr-2 text-sm font-small leading-[3em] text-white bg-indigo-800 rounded-full dark:bg-gray-700mb-4" style="width: max-content"><a href="' . esc_attr( esc_url( get_category_link( $category->term_id ) ) ) . '">' . $category->name . '</a></span>';
-                                    }
-
-                                echo trim($output);
-                                }
-                            ?>
-
-
-                            
-                    </div>
-
-                    <hr/>
-
-            
-          <hr class="mb-4"/>
-
-<div class="mb-4 dark:text-white ">
-<span class="mb-4 text-sm">Tags:</span>
-                  <?php
-
-                      $tagsoutput = '';
-                      $tags = get_the_tags();
-                      if ($tags){
-
-                          foreach($tags as $tag) {
-                              $tagsoutput .= '<span class="px-3 py-2 mr-2 text-sm font-small leading-[3em] text-white bg-indigo-800 rounded-full dark:bg-gray-700mb-4" style="width: max-content"><a href="' . esc_attr( esc_url( get_category_link( $tag->term_id ) ) ) . '">' . $tag->name . '</a></span>';
-                          }
-
-                      echo trim($tagsoutput);
-                      }
-                  ?>
-
-
-                  
-          </div>
-
-          <hr/>
-
-             
-                
-                            </div>
-                 </article>
+<div class="mb-4 dark:text-white">
+  <?php
+          $output = '';
+          $categories = get_the_category();
+          if ($categories){
+              foreach($categories as $category) {
+                  $output .= '<div class="inline-block"><span class="px-3 py-2 mr-2 text-sm font-small leading-[3em] text-white bg-indigo-800 rounded-full dark:bg-gray-700m" style="width: max-content">' . $category->name . '</a></span></div>';
+              }
+          echo trim($output);
+          }
+      ?>
+ </div>
+</div>           
+</article>
 
                                     <?php
                                         

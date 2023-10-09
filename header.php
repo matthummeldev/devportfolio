@@ -12,12 +12,12 @@
 <a href="#content" class="sr-only focus:not-sr-only"><?php _e('Skip to content', 'portfolio') ?></a>
 
 <header>
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
+    <nav class="site-heading">
+        <div class="site-heading-container">
       
-            <a href="<?php echo  home_url(); ?>" class="flex items-center site-name text-gradien">
+            <a href="<?php echo  home_url(); ?>" class="site-branding">
                 <?php echo get_bloginfo( 'name' ); ?>
-            </a> 
+            </a>
              
             <div class="flex items-center lg:order-2">
 
@@ -63,9 +63,9 @@
   while ( have_posts() ) :
     the_post();
     ?>
-<div class="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
-  <div class="flex flex-col items-center max-w-screen-md mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-      <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-center uppercase lg:text-6xl dark:text-white text-gradient">
+  <div class="hero">
+    <div class="hero-container">
+      <h1>
         <div class="text-center"><?php the_title(); ?></div>
         <?php if ( is_single() ) { ?>
         <time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm text-gray-700"><?php echo get_the_date(); ?></time>
@@ -79,10 +79,9 @@
 
 <?php } ?>
 <?php if ( is_archive() ) { ?>
-  <div class="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
-  <div class="flex flex-col items-center max-w-screen-md mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-      <div>
-      <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-center uppercase lg:text-6xl dark:text-white text-gradient">
+  <div class="hero">
+    <div class="hero-container">
+      <h1>
        <?php the_archive_title(); ?>
         </h1>  
         <?php if ( is_archive() ) { ?>
@@ -90,8 +89,6 @@
           <span class="text-sm font-normal normal text-slate-500"><?php _e('Last post in category made ','tailpress') ?></span><time datetime="<?php echo get_the_date( 'c' ); ?>" itemprop="datePublished" class="text-sm font-normal text-gray-700"><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago.'  ?></time>
         </div>
         <?php } ?>
-     
-
       </div>
  </div>
 </div>
@@ -103,10 +100,9 @@
 <?php } ?>
 <?php if ( is_single() ) { ?>
 
-  <div class="bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-white to-sky-100">
-  <div class="flex flex-col items-center max-w-screen-md mx-auto md:max-w-screen-md lg:max-w-screen-xl md:px-14 sm:py-12 lg:py-16">
-    <div>
-    <h1 class="text-5xl font-extrabold leading-tight tracking-tight text-center uppercase lg:text-6xl dark:text-white text-gradient">
+  <div class="hero">
+    <div class="hero-container">
+    <h1>
       <div class="text-center"><?php the_title(); ?></div>
     </h1>
 
@@ -130,7 +126,6 @@
 
 <?php } ?>
 </div>
-
 </div>
 </div>
 </div>
@@ -144,14 +139,13 @@
 <?php if ( is_front_page() ) { ?>
 
 <div class="hero"> 
-    <div class="hero-container">
+    <div class="h-screen home-hero-container">
 
             <?php // the_content(); ?>
-            <div>
 
             <h1 class="text-xl font-extrabold leading-tight tracking-tight uppercase md:text-3xl lg:text-5xl dark:text-white">
-            <span class="text-3xl md:text-4xl lg:text-6xl text-gradient">Hi there!</span>
-              I'm Matt Hummel
+            <span class="text-3xl md:text-4xl lg:text-6xl text-gradient">Hi there! 👋</span>
+              <br/>I'm Matt Hummel
             </h1>
           
             <p class="text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
@@ -165,7 +159,6 @@
                 <a href="https://github.com/mattrhummel" aria-label="Twitter">
                     <ion-icon name="logo-github"></ion-icon> 
                 </a>
-          </div>       
       </div>
 </div>
 

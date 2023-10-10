@@ -22,18 +22,7 @@
             <div class="flex items-center lg:order-2">
 
                 <a href="http://localhost:8001/contact/" class="primary-button">Get in touch</a>
-
-                <div class="w-20 h-20 mr-6">
-         
-         <?php 
-             $custom_logo_id = get_theme_mod('custom_logo');
-             $logo = wp_get_attachment_image_src($custom_logo_id , 'full');
-           ?>	
-
-           <?php echo '<img src="'. esc_url($logo[0]) .'" alt="'. get_bloginfo('name') .'" class="rounded-full filter grayscale">'; ?>
-           
-       </div>
-                
+    
                 <button data-collapse-toggle="menu-container" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
@@ -111,15 +100,16 @@
         <div class="text-center">
         <?php
 
-        $output = '<span class="text-sm">Posted in ';
-        $categories = get_the_category();
-        if ($categories){
+            $output = '<span class="text-sm">Posted in ';
+            $categories = get_the_category();
+            if ($categories){
 
-        foreach($categories as $category) {
-            $output .= '<span class="px-3 py-2 text-sm font-medium text-white bg-indigo-900 mx-1 rounded-full dark:bg-gray-700 style="width: max-content"><a href="' . esc_attr( esc_url( get_category_link( $category->term_id ) ) ) . '">' . $category->name . '</a></span>';
-        }
+            foreach($categories as $category) {
+                $output .= '<span class="mr-2 px-3 py-2 lg:mx-0; text-sm font-medium text-white bg-indigo-900 rounded-full dark:bg-gray-700" style="width: max-content"><a href="' . esc_attr( esc_url( get_category_link( $category->term_id ) ) ) . '">' . $category->name . '</a></span>';
+            }
 
-        echo trim($output);
+            echo trim($output);
+            
         }
 ?>
  <span class="text-sm font-normal text-slate-500"></span><span class="text-sm"><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?></span></span>
@@ -135,36 +125,78 @@
 </div>
   
 <?php } ?>
-
+`
 <?php if ( is_front_page() ) { ?>
 
-<div class="hero"> 
-    <div class="h-screen home-hero-container">
-
-            <?php // the_content(); ?>
-
-            <h1 class="text-xl font-extrabold leading-tight tracking-tight uppercase md:text-3xl lg:text-5xl dark:text-white">
-            <span class="text-3xl md:text-4xl lg:text-6xl text-gradient">Hi there! 👋</span>
-              <br/>I'm Matt Hummel
-            </h1>
-          
-            <p class="text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
-            A web developer with 12 years of experience located in Fredericksburg, Virginia.
-            </p>
+  <div class="hero"> 
+    <div class="home-hero-container">
+      <div class="grid grid-cols-1 lg:gap-5 lg:grid-cols-2">         
             
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/matthummel-va/" aria-label="LinkedIn">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-                <a href="https://github.com/mattrhummel" aria-label="Twitter">
-                    <ion-icon name="logo-github"></ion-icon> 
-                </a>
-      </div>
-</div>
+              <div>
+                <h1 class="text-xl font-extrabold leading-tight tracking-tight uppercase md:text-3xl lg:text-5xl dark:text-white">
+                <?php if ( get_field('hero_tagline') ) : ?>
+                <span class="text-3xl md:text-4xl lg:text-6xl text-gradient">
+                  <?php echo get_field('hero_tagline'); ?>
+               </span>
+                <?php endif; ?>
+                <?php if ( get_field('hero_subheading') ) : ?>
+                  <span class="font-thin"><?php echo get_field('hero_subheading'); ?></span>
+                  <?php endif; ?>
+                </h1>
+                <?php if ( get_field('hero_text') ) : ?>
+                <p class="text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
+                <?php echo get_field('hero_text'); ?>
+                </p> 
+                <?php endif; ?>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/matthummel-va/" aria-label="LinkedIn">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                    <a href="https://github.com/matthummeldev" aria-label="Twitter">
+                        <ion-icon name="logo-github"></ion-icon> 
+                    </a>
+                 </div>
+            </div>
 
-  </div>
-</div>
-</div>		
+          <div class="mt-10 lg:mt-0">      
+                  <?php 
+                    $custom_logo_id = get_theme_mod('custom_logo');
+                    $logo = wp_get_attachment_image_src($custom_logo_id , 'full');
+                  ?>	
+                  <?php echo '<img src="'. esc_url($logo[0]) .'" alt="'. get_bloginfo('name') .'" class="w-auto h-auto mx-auto md:mx-0 filter grayscale">'; ?>
+                            
+          </div>
+      </div>
+
+    <div class="w-full mt-10">
+        <?php if ( get_field('what_i_do_heading') ) : ?>
+          <h2 class="font-bold"> <?php echo get_field('what_i_do_heading'); ?></h2> 
+        <?php endif; ?>
+       <div class="grid w-full gap-5 lg:grid-cols-3">
+                  <?php if ( get_field('what_col_1_heading', 'option') ) : ?>
+                      <div class="p-5 hero-box bg-slate-50 border-slate-800">
+                        <h3 class="mt-0 text-2xl font-bold"><?php echo get_field('what_col_1_heading', 'option'); ?></h2>
+                        <p><?php echo get_field('what_col_1_description', 'option'); ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ( get_field('what_col_1_heading', 'option') ) : ?>
+                      <div class="p-5 hero-box bg-slate-50 border-slate-800">
+                        <h3 class="mt-0 text-2xl font-bold"><?php echo get_field('what_col_2_heading', 'option'); ?></h2>
+                        <p><?php echo get_field('what_col_2_description', 'option'); ?></p>
+                      </div>
+                  <?php endif; ?>
+                  <?php if ( get_field('what_col_3_heading', 'option') ) : ?>
+                      <div class="p-5 hero-box bg-slate-50 border-slate-800">
+                        <h3 class="mt-0 text-2xl font-bold"><?php echo get_field('what_col_3_heading', 'option'); ?></h2>
+                        <p><?php echo get_field('what_col_3_description', 'option'); ?></p>
+                      </div>
+                  <?php endif; ?>
+                </div>
+        </div>
+        
+      </div>
+    </div>
+</div>	
 		
 <?php } ?>
 

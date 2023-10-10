@@ -1,5 +1,9 @@
 <section class="bg-gray-50 section">
-      <h2><?php _e('Latest Writings', 'portfolio') ?></h2>
+
+      <?php if ( get_field('latest_post_section_heading', 'option') ) : ?>
+        <h2><?php echo get_field('latest_post_section_heading', 'option'); ?></h2>
+      <?php endif; ?>
+
       <div class="section-container"> 
              <?php
               $lastposts = get_posts( array(
@@ -11,13 +15,12 @@
               if ( $lastposts ) { ?>
               <?php foreach ( $lastposts as $post ) :
                     setup_postdata( $post ); ?>
-            <article class="post-card">
+             <article class="post-card">
                  <header>
                       <?php the_title( sprintf( '<h3>
                        <a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
                       <span class="text-sm"><?php echo  get_the_date(); ?></span>
                   </header>               
-                <hr />
                 <p><?php the_excerpt(); ?></p>
                   <?php
                           $output = '';

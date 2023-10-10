@@ -40,6 +40,11 @@ function tailpress_enqueue_scripts() {
 	wp_enqueue_style( 'tailpress', tailpress_asset( 'css/app.css' ), array(), $theme->get( 'Version' ) );
 	wp_enqueue_script( 'tailpress', tailpress_asset( 'js/app.js' ), array(), $theme->get( 'Version' ) );
     wp_enqueue_script( 'flowbite', 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js', true);
+    wp_enqueue_script( 'ionicons', 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js', true);
+    wp_enqueue_script( 'ionicons-min', 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js', true);
+
+
+
 }
 add_action( 'wp_enqueue_scripts', 'tailpress_enqueue_scripts' );
 /**

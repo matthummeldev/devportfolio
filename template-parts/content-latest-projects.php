@@ -6,7 +6,11 @@ $args1 = array(
 $the_query = new WP_Query( $args1 ); ?>
 <?php if ( $the_query->have_posts() ) : ?>
 <section class="section">
-      <h2><?php _e('Latest Projects', 'portfolio') ?></h2>
+
+      <?php if ( get_field('projects_section_heading', 'option') ) : ?>
+        <h2><?php echo get_field('projects_section_heading', 'option'); ?></h2>
+      <?php endif; ?>
+
         <div class="projects-section-container"> 
 
             <?php //the loop
@@ -14,14 +18,19 @@ $the_query = new WP_Query( $args1 ); ?>
                 $the_query->the_post();
             ?>
             
-       <article class="text-left card">
-        <?php if ( get_field('project_image') ) : $image = get_field('project_image'); ?>
+       <article class="lg:relative lg:mb-56">
+
+       <div class="w-full">
         
-        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="mb-5 rounded-t-lg"/>
-           
+        <?php if ( get_field('project_image') ) : $image = get_field('project_image'); ?>
+          
+              <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"/>
+        
+
         <?php endif; ?>
         
-        <div class="project-details">
+        
+        <div class="p-10 text-left bg-indigo-50 lg:absolute lg:w-7/12 lg:top-60 lg:right-10 project-details">
           
           <header>
               <h2><?php the_title();?></h2>      
@@ -32,8 +41,7 @@ $the_query = new WP_Query( $args1 ); ?>
               </p>
           </header>
           
-        <div class="block w-full">
-            <hr class="mb-4"/>
+        <div class="category-container">
 
             <?php
                       $project_id = get_the_ID(); // gets the ID of the current post
@@ -49,12 +57,11 @@ $the_query = new WP_Query( $args1 ); ?>
           ?>    
           
           </div>
-             <hr class="mt-4"/>
-                <div class="inline-flex mt-8 rounded-md shadow-sm" role="group">
+                <div class="project-buttons" role="group">
                       <?php if ( get_field('repository_url') ) : ?>
                         <a href="<?php echo get_field('repository_url'); ?>" class="project-button">
-                        <svg class="w-3 h-3 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
+                        <svg class="w-3 h-3 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"    fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
                       </svg>
                       <?php _e('View Code', 'portfolio') ?>
                       

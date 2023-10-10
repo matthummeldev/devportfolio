@@ -1,0 +1,68 @@
+@layer base {
+  
+    @font-face {
+      font-family: 'Gabarito', 'Ubuntu', sans-serif;
+      src: url(https://fonts.googleapis.com) format("truetype");
+    }
+    body {
+      font-family: 'Unbuntu', sans-serif;
+    }
+    .site-heading {
+      @apply bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800;
+    }
+    .site-heading-container {
+      @apply flex flex-wrap items-center justify-between max-w-screen-xl mx-auto;
+    }
+   .site-branding {
+      @apply flex items-center justify-center font-[900] uppercase
+    }
+    main p a{
+      @apply text-blue-600 underline hover:text-indigo-400;
+    }
+    main a {
+      @apply text-blue-600 underline hover:text-indigo-400;
+    }  
+    h1,h2,h3,h4,h5,h6 {
+      @apply text-indigo-900;
+      font-family: 'Gabrito', sans-serif;
+    }
+    h1 {
+      @apply mb-5 text-4xl text-indigo-900 md:text-6xl lg:text-7xl;
+    }
+    h2 {
+      @apply mt-10 mb-5 text-3xl md:text-4xl lg:text-5xl;
+    }
+    h3 {
+      @apply mb-5 text-3xl md:text-4xl;
+    }
+    h4 {
+      @apply mb-5 text-2xl md:text-3xl lg:text-4xl;
+    }
+    h5 {
+      @apply mb-5 text-3xl lg:text-4xl;
+    }
+    h6 {
+      @apply mb-5 text-3xl lg:text-4xl;
+    }  
+    p {
+      @apply mb-5 text-lg leading-relaxed font-extralight text-slate-600;
+    }
+    .entry-content ul li, ol li {
+      @apply mb-5 list-outside list-decimal
+    }
+   .entry-content form input, textarea {
+    @apply mb-5 w-full
+   }
+   .entry-content form input[type=text], input[type=email], input[type=phone], input[type=url], input[type=tel] {
+      @apply border-0 border-b-2 border-gray-200
+   }
+  .entry-content form input[type=submit] {
+      @apply text-white bg-indigo-950 hover:bg-indigo-700  mr-[1.5rem] mt-5
+  }
+  .entry-content form textarea {
+      @apply  p-5 border-0 border-b-2 border-gray-200 bg-slate-50 focus:border-gray-700;
+  }
+  .entry-content form input[type=checkbox] {
+    @apply w-5 h-5 rounded-full mb-0
+  }
+    }

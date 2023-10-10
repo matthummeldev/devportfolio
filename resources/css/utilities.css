@@ -1,0 +1,5 @@
+@layer utilities {
+    .button {
+        padding: 12px 30px;
+    }
+}  

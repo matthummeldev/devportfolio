@@ -8,7 +8,7 @@
       font-family: 'Unbuntu', sans-serif;
     }
     .site-heading {
-      @apply px-4 py-0 bg-white border-gray-200 lg:px-6 dark:bg-gray-800;
+      @apply px-4 pt-4 pb-0 bg-white border-gray-200 lg:px-6 dark:bg-gray-800;
     }
     .site-heading-container {
       @apply flex flex-wrap items-center justify-between max-w-screen-md mx-auto lg:max-w-screen-xl;
@@ -27,7 +27,7 @@
       @apply mb-5 text-3xl font-extrabold text-indigo-900 md:text-6xl ;
     }
     h2 {
-      @apply mt-10 mb-5 text-3xl font-extrabold leading-loose md:text-5xl;
+      @apply my-5 text-3xl font-extrabold leading-tight md:text-5xl;
     }
     h3 {
       @apply mb-5 text-2xl font-extrabold md:text-4xl;

@@ -7,9 +7,6 @@
     body {
       font-family: 'Unbuntu', sans-serif;
     }
-    *:hover { 
-      outline:1px blue solid;
-    } 
     .site-heading {
       @apply px-4 pt-4 bg-white border-gray-200 lg:px-6 dark:bg-gray-800;
     }

@@ -560,8 +560,6 @@ video {
       src: url(https://fonts.googleapis.com) format("truetype");
     }body {
       font-family: 'Unbuntu', sans-serif;
-    }*:hover { 
-      outline:1px blue solid;
     }.site-heading{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));

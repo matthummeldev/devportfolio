@@ -27,7 +27,7 @@
       @apply mb-5 text-3xl font-extrabold text-indigo-900 md:text-6xl ;
     }
     h2 {
-      @apply mt-10 mb-5 text-3xl font-extrabold leading-loose md:text-5xl;
+      @apply mt-10 mb-5 text-3xl font-extrabold md:text-5xl;
     }
     h3 {
       @apply mb-5 text-2xl font-extrabold md:text-4xl;

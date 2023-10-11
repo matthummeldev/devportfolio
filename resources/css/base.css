@@ -18,37 +18,34 @@
     }
     main p a{
       @apply text-blue-600 underline hover:text-indigo-400;
-    }
-    main a {
-      @apply text-blue-600 underline hover:text-indigo-400;
-    }  
+    } 
     h1,h2,h3,h4,h5,h6 {
       @apply text-indigo-900;
       font-family: 'Gabrito', sans-serif;
     }
     h1 {
-      @apply mb-5 text-4xl text-indigo-900 md:text-6xl lg:text-7xl;
+      @apply mb-5 text-3xl font-extrabold text-indigo-900 md:text-6xl ;
     }
     h2 {
-      @apply mt-10 mb-5 text-3xl md:text-4xl lg:text-5xl;
+      @apply mt-10 mb-5 text-3xl font-extrabold leading-loose md:text-5xl;
     }
     h3 {
-      @apply mb-5 text-3xl md:text-4xl;
+      @apply mb-5 text-2xl font-extrabold md:text-4xl;
     }
     h4 {
-      @apply mb-5 text-2xl md:text-3xl lg:text-4xl;
+      @apply mb-5 text-2xl font-extrabold md:text-3xl lg:text-3xl;
     }
     h5 {
-      @apply mb-5 text-3xl lg:text-4xl;
+      @apply mb-5 text-2xl font-extrabold lg:text-2xl;
     }
     h6 {
-      @apply mb-5 text-3xl lg:text-4xl;
+      @apply mb-5 text-2xl font-extrabold lg:text-2xl;
     }  
     p {
       @apply mb-5 text-lg leading-relaxed font-extralight text-slate-600;
     }
     .entry-content ul li, ol li {
-      @apply mb-5 list-outside list-decimal
+      @apply mb-4 ml-10 text-lg leading-relaxed list-disc list-outside font-extralight text-slate-600;
     }
    .entry-content form input, textarea {
     @apply mb-5 w-full

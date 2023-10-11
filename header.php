@@ -171,24 +171,24 @@
 
     <div class="mt-10">
         <?php if ( get_field('what_i_do_heading', 'options') ) : ?>
-          <h2 class="font-bold"> <?php echo get_field('what_i_do_heading', 'options'); ?></h2> 
+          <h2> <?php echo get_field('what_i_do_heading', 'options'); ?></h2> 
         <?php endif; ?>
        <div class="grid w-full gap-5 lg:grid-cols-3">
                   <?php if ( get_field('what_col_1_heading', 'option') ) : ?>
-                      <div class="p-5 hero-box bg-slate-50 border-slate-800">
-                        <h3 class="mt-0 text-2xl font-bold"><?php echo get_field('what_col_1_heading', 'option'); ?></h2>
+                      <div class="hero-box">
+                        <h3 class="mt-0 "><?php echo get_field('what_col_1_heading', 'option'); ?></h3>
                         <p><?php echo get_field('what_col_1_description', 'option'); ?></p>
                       </div>
                   <?php endif; ?>
                   <?php if ( get_field('what_col_1_heading', 'option') ) : ?>
-                      <div class="p-5 hero-box bg-slate-50 border-slate-800">
-                        <h3 class="mt-0 text-2xl font-bold"><?php echo get_field('what_col_2_heading', 'option'); ?></h2>
+                      <div class="hero-box">
+                        <h3 class="mt-0 "><?php echo get_field('what_col_2_heading', 'option'); ?></h3>
                         <p><?php echo get_field('what_col_2_description', 'option'); ?></p>
                       </div>
                   <?php endif; ?>
                   <?php if ( get_field('what_col_3_heading', 'option') ) : ?>
-                      <div class="p-5 hero-box bg-slate-50 border-slate-800">
-                        <h3 class="mt-0 text-2xl font-bold"><?php echo get_field('what_col_3_heading', 'option'); ?></h2>
+                      <div class="hero-box">
+                        <h3 class="mt-0 "><?php echo get_field('what_col_3_heading', 'option'); ?></h3>
                         <p><?php echo get_field('what_col_3_description', 'option'); ?></p>
                       </div>
                   <?php endif; ?>

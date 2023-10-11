@@ -22,9 +22,9 @@
 
 <article class="post-card">
                  <header>
-                      <?php the_title( sprintf( '<h3>
-                       <a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
-                      <span class="text-sm"><?php echo  get_the_date(); ?></span>
+                      <?php the_title( sprintf( '<h2><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
+                      '</a></h2>' ); ?>
+                      <span class="text-lg"><?php echo  get_the_date(); ?></span>
                   </header>               
                 <p><?php the_excerpt(); ?></p>
                   <?php

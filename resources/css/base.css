@@ -8,13 +8,13 @@
       font-family: 'Unbuntu', sans-serif;
     }
     .site-heading {
-      @apply px-4 pt-4 bg-white border-gray-200 lg:px-6 dark:bg-gray-800;
+      @apply px-4 py-0 bg-white border-gray-200 lg:px-6 dark:bg-gray-800;
     }
     .site-heading-container {
-      @apply flex flex-wrap items-center justify-between max-w-screen-xl mx-auto;
+      @apply flex flex-wrap items-center justify-between max-w-screen-md mx-auto lg:max-w-screen-xl;
     }
    .site-branding {
-      @apply flex items-center justify-center text-xl font-[900] uppercase;
+      @apply flex items-center justify-center text-start md:text-lg font-[900] uppercase;
     }
     main p a{
       @apply text-blue-600 underline hover:text-indigo-400;

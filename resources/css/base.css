@@ -14,7 +14,7 @@
       @apply flex flex-wrap items-center justify-between max-w-screen-xl mx-auto;
     }
    .site-branding {
-      @apply flex items-center justify-center font-[900] uppercase;
+      @apply flex items-center justify-center text-xl font-[900] uppercase;
     }
     main p a{
       @apply text-blue-600 underline hover:text-indigo-400;

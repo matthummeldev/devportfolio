@@ -17,7 +17,7 @@
       @apply flex items-center justify-center text-xl font-[900] uppercase;
     }
     main p a{
-      @apply text-blue-600 underline hover:text-indigo-400;
+      @apply text-indigo-500 underline hover:text-indigo-200;
     } 
     h1,h2,h3,h4,h5,h6 {
       @apply text-indigo-900;

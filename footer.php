@@ -41,7 +41,7 @@
 </div>
                
 <span class="footer-copyright">
-    &copy; <a href="<?php echo home_url(); ?>" class="hover:underline"><?php echo get_bloginfo('name') ?></a>
+    &copy; <a href="<?php echo esc_url(home_url()); ?>" class="hover:underline"><?php echo get_bloginfo('name') ?></a>
 </span>
 
 </footer>

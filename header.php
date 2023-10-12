@@ -179,8 +179,8 @@
       </div>
 
     <div class="mt-10">
-        <?php if ( get_field('what_i_do_heading', 'options') ) : ?>
-          <h2> <?php echo get_field('what_i_do_heading', 'options'); ?></h2> 
+        <?php if ( get_field('what_i_do_heading', 'option') ) : ?>
+          <h2> <?php echo get_field('what_i_do_heading', 'option'); ?></h2> 
         <?php endif; ?>
        <div class="grid w-full gap-5 lg:grid-cols-3">
                   <?php if ( get_field('what_col_1_heading', 'option') ) : ?>

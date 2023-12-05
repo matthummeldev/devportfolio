@@ -20,10 +20,17 @@ function formatPhoneNumber(value) {
   return value;
 }
 
-// Add event listener to the telephone input field
-var telInput = document.querySelector('input[type="tel"]');
-telInput.addEventListener('input', function (e) {
-  e.target.value = formatPhoneNumber(e.target.value);
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+  // Add event listener to the telephone input field
+  var telInput = document.getElementById('telInput');
+  if (telInput) {
+    telInput.addEventListener('input', function (e) {
+      e.target.value = formatPhoneNumber(e.target.value);
+    });
+  } else {
+    console.error('Telephone input not found');
+  }
 });
 
 /***/ }),

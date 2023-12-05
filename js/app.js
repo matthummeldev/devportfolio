@@ -7,11 +7,9 @@
   \*****************************/
 /***/ (() => {
 
-function formatPhoneNumber() {
-  var phoneNumber = document.getElementById('phone-number');
-  var formattedPhoneNumber = phoneNumber.value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-  phoneNumber.value = formattedPhoneNumber;
-}
+$("input[name='phone-number']").keyup(function () {
+  $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
+});
 
 /***/ }),
 

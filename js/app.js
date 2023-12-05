@@ -7,8 +7,23 @@
   \*****************************/
 /***/ (() => {
 
-$("input[name='phone-number']").keyup(function () {
-  $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d+)$/, "($1)$2-$3"));
+// Function to format the telephone input
+function formatPhoneNumber(value) {
+  // Remove all non-digit characters
+  var cleaned = ('' + value).replace(/\D/g, '');
+
+  // Check if the input is of correct length
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  if (match) {
+    return "".concat(match[1], "-").concat(match[2], "-").concat(match[3]);
+  }
+  return value;
+}
+
+// Add event listener to the telephone input field
+var telInput = document.querySelector('input[type="tel"]');
+telInput.addEventListener('input', function (e) {
+  e.target.value = formatPhoneNumber(e.target.value);
 });
 
 /***/ }),

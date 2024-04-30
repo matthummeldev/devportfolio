@@ -13,7 +13,7 @@
             <?php } ?>
         
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/matthummel-va/" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/matt-hummel/" aria-label="LinkedIn">
                      <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
                 <a href="https://github.com/matthummeldev" aria-label="Twitter">
